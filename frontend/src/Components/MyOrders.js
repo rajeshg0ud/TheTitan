@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useMyOrdersQuery } from '../reduxStore/OrderApiSlice';
 
 function MyOrders() {
-    const { data: orders, isLoading, error } = useMyOrdersQuery();
+const { data: orders, isLoading, error } = useMyOrdersQuery({}, { staleTime: 0 });
 
     useEffect(() => {
         if (orders) {
