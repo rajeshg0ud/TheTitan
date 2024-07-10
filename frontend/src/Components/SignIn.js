@@ -32,6 +32,12 @@ function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+       if ( !email || !password) {
+      toast.error("All fields are required!");
+      return;
+      }
+
+      
       const res = await login({email, password}).unwrap();
         dispatch(setCredentials({...res})); // Assuming setCredentials action expects data
         toast.success('Logged in successfully');
