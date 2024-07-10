@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import connectToDB from './db.js';
 import cors from 'cors';
+import path from 'path';
 
 const app = express();
 const PORT = 5000;
