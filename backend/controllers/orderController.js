@@ -36,6 +36,7 @@ const getMyOrders=asyncHandler(async(req, res)=>{
     const orders= await Order.find({user: req.user._id})
     
     console.log(orders)
+      console.log("  console.log(orders)")
     res.status(200).json(orders)
 })
 export {placeOrder, getMyOrders};
