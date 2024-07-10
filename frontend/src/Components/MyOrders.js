@@ -11,8 +11,8 @@ function MyOrders() {
     }, [orders]);
     
 
-    if (isLoading) return <div  className=" mt-24">Loading...</div>;
-    if (error) return <div  className=" mt-24">Error loading orders</div>;
+    if (isLoading) return <div  className="m-5 mt-24">Loading...</div>;
+    if (error) return <div  className="m-5 mt-24">{error}</div>;
 
     return (
         <div className="flex flex-col m-2 sm:ml-16 mt-24">
