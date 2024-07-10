@@ -9,7 +9,6 @@ const placeOrder=asyncHandler(async(req, res)=>{
         .json("No items found, please add the items")
     }
     else{ 
-      console.log(req.user._id)
         const newOrder= new Order({
             orderItems: orderItems.map((item)=>({
                 name: item.name,
@@ -35,7 +34,8 @@ const placeOrder=asyncHandler(async(req, res)=>{
 
 const getMyOrders=asyncHandler(async(req, res)=>{
     const orders= await Order.find({user: req.user._id})
-
+    
+    console.log(orders)
     res.status(200).json(orders)
 })
 export {placeOrder, getMyOrders};
