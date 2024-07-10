@@ -9,9 +9,10 @@ function MyOrders() {
             console.log(orders);
         }
     }, [orders]);
+    
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading orders</div>;
+    if (isLoading) return <div  className=" mt-24">Loading...</div>;
+    if (error) return <div  className=" mt-24">Error loading orders</div>;
 
     return (
         <div className="flex flex-col m-2 sm:ml-16 mt-24">
