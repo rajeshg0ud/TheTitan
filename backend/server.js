@@ -42,4 +42,9 @@ app.use('/api/productRouter', productRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+<<<<<<< HEAD
 });
+=======
+});
+
+>>>>>>> 06b6b30aa9831dbfcb1a8e0fda54b25653d43163
