@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation } from '../reduxStore/UserApiSlice';
 import { setCredentials } from '../reduxStore/authSlice';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 
 function SignIn() {

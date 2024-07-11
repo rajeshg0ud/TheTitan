@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSignOutMutation } from '../reduxStore/UserApiSlice';
 import { toast } from 'react-toastify';
 import { setCredentials } from '../reduxStore/authSlice';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 function Header() {
   const userInfo = useSelector((state) => state.authSlice.userInfo);
