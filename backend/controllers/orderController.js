@@ -8,13 +8,13 @@ const placeOrder=asyncHandler(async(req, res)=>{
         res.status(400)
         .json("No items found, please add the items")
     }
-    else{ 
-      console.log(req.user._id)
+    else{  
         const newOrder= new Order({
             orderItems: orderItems.map((item)=>({
+                id: item.id,
                 name: item.name,
                 quantity: item.quantity,
-                image: item.image,
+                imageUrl: item.imageUrl,
                 price: item.price,
                 product: item._id,
             })),

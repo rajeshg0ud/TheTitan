@@ -1,5 +1,4 @@
-import { apiSlice } from './ApiSlice';
-import { USER_URL } from '../Constants'; 
+import { apiSlice } from './ApiSlice'; 
 
 export const userApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -18,9 +17,9 @@ export const userApiSlice = apiSlice.injectEndpoints({
             }),
         }),
         signOut: builder.mutation({
-            query:()=>({
+            query: () => ({
                 url: `http://localhost:5000/api/userRouter/signOut`,
-                method:'POST',
+                method: 'POST',
             })
         })
     }),

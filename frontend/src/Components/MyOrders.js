@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useMyOrdersQuery } from '../reduxStore/OrderApiSlice';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { Link } from 'react-router-dom';
+
 
 function MyOrders() {
-    const { data: orders, isLoading, error } = useMyOrdersQuery();
+const { data: orders, isLoading, error } = useMyOrdersQuery({}, { staleTime: 0 });
+     
+    if (isLoading) return <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
+    <ClipLoader color="#36d7b7" loading={isLoading} size={50} />
+</div>;
 
-    useEffect(() => {
-        if (orders) {
-            console.log(orders);
-        }
-    }, [orders]);
-
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading orders</div>;
+    if (error) return <div  className="m-5 mt-24">{error?.message}</div>;
 
     return (
         <div className="flex flex-col m-2 sm:ml-16 mt-24">
@@ -25,7 +25,9 @@ function MyOrders() {
                                     <p className="text-lg mb-2 font-semibold">Item Details</p>
                                     {order.orderItems.map((item, idx) => (
                                         <div key={idx} className="flex my-3">
-                                            <img src={item.image} alt={item.name} className="w-20 h-20 object-cover mr-3" />
+                                             <Link to={`/Product?p=${item.id}`}>
+                                            <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover mr-3" />
+                                            </Link>
                                             <div>
                                                 <p className="text-zinc-800"><strong>{item.name}</strong> </p>
                                                 <p className="text-zinc-800">Qty: {item.quantity} </p>

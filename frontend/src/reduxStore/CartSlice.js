@@ -40,12 +40,12 @@ const CartSlice = createSlice({
     initialState: initialState,
     reducers: {
         addToCart: (state, action) => {
-            const { id } = action.payload;
-            const existingItem = state.cartItems.find(cartItem => cartItem.id === id);
+            const { _id } = action.payload;
+            const existingItem = state.cartItems.find(cartItem => cartItem._id === _id);
         
             const newCartItems = existingItem
                 ? state.cartItems.map(cartItem => 
-                    cartItem.id === id 
+                    cartItem._id === _id 
                         ? { ...cartItem, quantity: cartItem.quantity + 1 } 
                         : cartItem
                   )
@@ -57,14 +57,14 @@ const CartSlice = createSlice({
         },
         
         removeFromCart: (state, action) => {
-            const {id}= action.payload;
+            const {_id}= action.payload;
 
             const updatedItems= state.cartItems.map((cartItem)=>{
 
-                    if( cartItem.quantity===1 && cartItem.id=== id){
+                    if( cartItem.quantity===1 && cartItem._id=== _id){
                         return null;
                     }
-                    else if(cartItem.quantity>1  && cartItem.id=== id){                  
+                    else if(cartItem.quantity>1  && cartItem._id=== _id){                  
                         return {...cartItem, quantity: cartItem.quantity-1}
                    }
                    else{
@@ -83,20 +83,20 @@ const CartSlice = createSlice({
         }
         ,
         increaseQuantity: (state, action) => {
-            const { id } = action.payload;
+            const { _id } = action.payload;
           
             const newState = {
               ...state,
               cartItems: state.cartItems.map((cartItem) => {
-                if (cartItem.id === id) {
-                  // If the cartItem has the same id as the action payload,
+                if (cartItem._id === _id) {
+                  // If the cartItem has the same _id as the action payload,
                   // increase its quantity by 1
                   return {
                     ...cartItem,
                     quantity: cartItem.quantity + 1
                   };
                 } else {
-                  // If the cartItem doesn't match the action payload id,
+                  // If the cartItem doesn't match the action payload _id,
                   // return it unchanged
                   return cartItem;
                 }
