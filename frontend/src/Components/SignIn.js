@@ -8,7 +8,7 @@ import { setCredentials } from '../reduxStore/authSlice';
 
 function SignIn() {
   const userInfo = useSelector((state) => state.authSlice.userInfo);
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, error }] = useLoginMutation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,6 +45,12 @@ function SignIn() {
       toast.error('Login failed');
     }
   };
+
+  if (isLoading) return <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
+  <ClipLoader color="#36d7b7" loading={isLoading} size={50} />
+</div>;
+
+  if (error) return <div  className="m-5 mt-24">{error?.message}</div>;
   
   return (
     <div className='mt-28 flex justify-center'>

@@ -49,6 +49,11 @@ function Header() {
     });
   }
 
+  if (isLoading) return <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
+  <ClipLoader color="#36d7b7" loading={isLoading} size={50} />
+</div>;
+
+
   return (
     <div className='fixed top-0 w-full z-50'>
       <header className='flex justify-between pt-2 sm:p-[10px] sm:pb-0 bg-white shadow-lg'>

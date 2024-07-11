@@ -16,7 +16,7 @@ function SignIn() {
   const [passwordType, setPasswordType] = useState(true);
   const [passwordType2, setPasswordType2] = useState(true);
 
-  const [register, {isLoading}]= useRegisterMutation();
+  const [register, {isLoading, error}]= useRegisterMutation();
 
 const dispatch=useDispatch();
 
@@ -60,6 +60,12 @@ const userInfo = useSelector((state) => state.authSlice.userInfo);
       navigate(redirect);
     }
   }, [userInfo, redirect, navigate]);  
+
+  if (isLoading) return <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
+  <ClipLoader color="#36d7b7" loading={isLoading} size={50} />
+</div>;
+
+  if (error) return <div  className="m-5 mt-24">{error?.message}</div>;
 
   return (
     <div className='mt-28 flex justify-center'>

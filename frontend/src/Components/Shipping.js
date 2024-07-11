@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { usePlaceOrderMutation } from '../reduxStore/OrderApiSlice';
+import React, { useEffect, useState } from 'react'; 
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -40,7 +39,7 @@ function Shipping() {
     if (userInfo) {
       navigate(redirect);
     }
-  }, [userInfo, redirect, navigate]);  
+  }, [userInfo, redirect]);  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -1,4 +1,5 @@
 import express from 'express';
+import productRouter from './routes/productRouter.js'
 import userRouter from './routes/userRouter.js';
 import orderRouter from './routes/orderRouter.js';
 import cookieParser from 'cookie-parser';
@@ -42,9 +43,5 @@ app.use('/api/productRouter', productRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-<<<<<<< HEAD
+  
 });
-=======
-});
-
->>>>>>> 06b6b30aa9831dbfcb1a8e0fda54b25653d43163

@@ -14,12 +14,10 @@ function PlaceOrder() {
     const { userInfo } = useSelector((state) => state.authSlice);
 
     const [isOrderPlaced, setIsOrderPlaced] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
 
     const [placeOrder, { isLoading: placeOrderLoading }] = usePlaceOrderMutation();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const location = useLocation();
+    const navigate = useNavigate(); 
  
     let numOfItem = 0;
     let totalPrice = 0;
@@ -52,7 +50,7 @@ function PlaceOrder() {
         
             try {
                 
-                const res = await placeOrder({
+                  await placeOrder({
                     orderItems: cartItems,
                     paymentMethod: 'COD',
                     shippingAddress: address,
@@ -79,7 +77,7 @@ function PlaceOrder() {
     }, []);
 
 
-    if (isLoading || placeOrderLoading) {
+    if ( placeOrderLoading) {
         return <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
             <ClipLoader color="#36d7b7" loading={placeOrderLoading} size={50} />
             </div>;
@@ -181,7 +179,7 @@ function PlaceOrder() {
                     <div className="border p-4">
                         <div className="flex justify-between mt-3">
                             <p className="text-lg">Order Summary</p>
-                            <p className="font-normal font-xs">({cartItems.length} Items)</p>
+                            <p className="font-normal font-xs">({numOfItem} Items)</p>
                         </div>
                         <p className="text-green-600 text-sm mb-3">Overall Savings ₹ {totalPrice - discountedPrice}</p>
                         <hr />

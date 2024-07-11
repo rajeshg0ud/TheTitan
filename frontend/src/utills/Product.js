@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToCart } from '../reduxStore/CartSlice';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../reduxStore/getProductsApiSlice';
 import ClipLoader from 'react-spinners/ClipLoader';
 
@@ -24,7 +24,7 @@ function Product() {
 
   if (error) return <div  className="m-5 mt-24">{error.message}</div>;
 
-  const {_id, name, gender, imageUrl, price, listedPrice}= data;
+  const {  name, gender, imageUrl, price, listedPrice}= data;
  
   
   return (
@@ -33,7 +33,7 @@ function Product() {
       {[...Array(6).keys()].map(i => {
       return (
         <img key={i * Math.random()} src={imageUrl && imageUrl.replace(/.(?=\.jpg)/, i + 1)} 
-        className='w-full md:w-[500px] object-cover' />
+        className='w-full md:w-[500px] object-cover' alt={name}/>
       ); 
   })}
 
