@@ -7,7 +7,6 @@ dotenv.config();
 import connectToDB from './db.js';
 import cors from 'cors';
 import path from 'path';
-import productRouter from './routes/productRouter.js';
 
 const app = express();
 const PORT = 5000;
@@ -15,7 +14,7 @@ connectToDB();
 
 // Middleware setup
 app.use(cors({
-    origin: 'http://localhost:3000', // Replace with your frontend URL
+    origin: 'https://thetitan-858v.onrender.com', // Replace with your frontend URL
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
