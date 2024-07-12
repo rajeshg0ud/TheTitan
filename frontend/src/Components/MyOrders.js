@@ -20,20 +20,20 @@ function MyOrders() {
 
     return (
         <div className="flex flex-col m-2 sm:ml-16 mt-24">
-            <p className="m-[6px] text-xl sm:text-3xl">MY ORDERS</p>
+            <p className=" md:m-[6px] text-lg sm:text-3xl">MY ORDERS</p>
             <div className="flex flex-col sm:flex-row">
                 <div className="w-full sm:w-4/5">
                     {orders && orders.map((order, index) => (
-                        <div className="flex flex-row p-4 m-[8px] my-5 border" key={index}>
+                        <div className="flex flex-col md:flex-row p-4 m-[8px] my-5 border" key={index}>
                             <div className="flex flex-col w-[71%]">
                                 <div className="border-b p-4 mb-4">
-                                    <p className="text-lg mb-2 font-semibold">Item Details</p>
+                                    <p className="text-md md:text-lg mb-2 font-semibold">Item Details</p>
                                     {order.orderItems.map((item, idx) => (
                                         <div key={idx} className="flex my-3">
                                             <Link to={`/Product?p=${item.id}`}>
-                                                <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover mr-3" />
+                                                <img src={item.imageUrl} alt={item.name} className=" min-w-14 md:w-20 h-20 object-cover mr-3" />
                                             </Link>
-                                            <div>
+                                            <div className=' ml-2 text-sm lg:text-lg md:ml-0 min-w-full'>
                                                 <p className="text-zinc-800"><strong>{item.name}</strong></p>
                                                 <p className="text-zinc-800">Qty: {item.quantity}</p>
                                                 <p className="text-zinc-800">₹{item.price}</p>
@@ -41,9 +41,9 @@ function MyOrders() {
                                         </div>
                                     ))}
                                 </div>
-                                <div className="p-4">
-                                    <p className="text-lg mb-2 font-semibold">Address</p>
-                                    <div className="flex flex-col mb-2">
+                                <div className="p-4 text-sm md:text-md border-b md:border-none">
+                                    <p className="text-md md:text-lg mb-2 font-semibold">Address</p>
+                                    <div className="flex flex-col mb-2  ">
                                         <p className="text-gray-500">Area</p>
                                         <p>{order.shippingAddress.address}</p>
                                     </div>
@@ -61,10 +61,10 @@ function MyOrders() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="border-l p-4 ml-4 flex-1">
-                                <p className="text-lg mb-2 font-semibold">Order Summary</p>
-                                <p className="py-2 flex justify-between"><span>Order ID:</span><span>{order._id}</span></p>
-                                <p className="py-2 flex justify-between"><span>Ordered on:</span><span>{new Date(order.createdAt).toLocaleString()}</span></p>
+                            <div className="md:border-l p-3 md:p-4 md:ml-4 flex-1 text-sm md:text-md">
+                                <p className="text-md md:text-lg mb-2 font-semibold">Order Summary</p>
+                                <p className="py-2 flex flex-col md:flex-row justify-between"><span className=' text-gray-500 md:text-black'>Order ID:</span><span>{order._id}</span></p>
+                                <p className="py-2 flex flex-col md:flex-row justify-between"><span className=' text-gray-500 md:text-black'>Ordered on:</span><span>{new Date(order.createdAt).toLocaleString()}</span></p>
                                 <p className="py-2 flex justify-between"><span>Items Price:</span><span>₹{order.itemsPrice}</span></p>
                                 <p className="py-2 flex justify-between"><span>Tax Price:</span><span>₹{order.taxPrice}</span></p>
                                 <p className="py-2 flex justify-between"><span>Shipping Price:</span><span>₹{order.shippingPrice}</span></p>
