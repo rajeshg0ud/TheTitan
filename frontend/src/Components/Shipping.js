@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -17,7 +17,6 @@ function Shipping() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
     if (!userInfo) {
       navigate('/SignIn?redirect=/Shipping');
     }
@@ -28,31 +27,30 @@ function Shipping() {
       setPincode(Address.pincode || '');
       setCountry(Address.country || '');
     }
-  }, [Address]);
+  }, [userInfo, Address, navigate]); // Added 'userInfo' and 'navigate' to the dependencies array
 
-  
-  const {search}= useLocation();
-  const sp= new URLSearchParams(search);
-  const redirect= sp.get('redirect') || '/Shipping';
+  const { search } = useLocation();
+  const sp = new URLSearchParams(search);
+  const redirect = sp.get('redirect') || '/Shipping';
 
-    useEffect(() => {
+  useEffect(() => {
     if (userInfo) {
       navigate(redirect);
     }
-  }, [userInfo, redirect, navigate]); 
-  
+  }, [userInfo, redirect, navigate]); // Ensure 'navigate' is included
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-      try {
-        if (!address || !city || !pincode || !country) {
-          toast.error('All fields are required!');
-          return;
-        }
-        dispatch(addAddress({ address, city, pincode, country }));
-        navigate('/PlaceOrder');
-      } catch (err) {
-        toast.error(err);
+    try {
+      if (!address || !city || !pincode || !country) {
+        toast.error('All fields are required!');
+        return;
       }
+      dispatch(addAddress({ address, city, pincode, country }));
+      navigate('/PlaceOrder');
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   return (
