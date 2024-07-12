@@ -5,8 +5,7 @@ import orderRouter from './routes/orderRouter.js';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 dotenv.config();
-import connectToDB from './db.js';
-import cors from 'cors';
+import connectToDB from './db.js'; 
 import path from 'path';
 
 const app = express();
