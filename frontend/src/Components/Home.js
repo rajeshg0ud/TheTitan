@@ -30,7 +30,7 @@ function Home() {
    useEffect(()=>{
     const fetchData=async()=>{
       try{
-      const res= await fetch('http://localhost:5000/api/productRouter/products');
+      const res= await fetch('https://thetitan-858v.onrender.com/api/productRouter/products');
       const json= await res.json();
       setData(json);
     }
