@@ -6,12 +6,14 @@ export const productApiSlice = apiSlice.injectEndpoints({
         getProducts: builder.mutation({
             query: () => ({
                 url: `${BASE_URL}/api/productRouter/products`,
+                method: 'POST',
             }),
         }),
 
         getProductById: builder.mutation({
             query: (id) => ({
                 url: `${BASE_URL}/api/productRouter/product/${id}`,
+                method: 'POST',
             }),
         }),
     }),
