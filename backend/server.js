@@ -16,7 +16,7 @@ connectToDB();
 // Middleware setup
 app.use(cors({ 
 
-    origin: 'https://thetitan-858v.onrender.com/', // Replace with your frontend URL
+    origin: 'https://thetitan-858v.onrender.com', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
