@@ -14,7 +14,7 @@ const PORT = 5000;
 connectToDB();
 
 app.use(cors({
-    origin:   'http://localhost:3000' ,
+    origin:   'https://the-titan.vercel.app' ,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
     credentials: true
