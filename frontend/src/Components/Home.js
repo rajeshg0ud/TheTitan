@@ -2,6 +2,7 @@ import React from 'react'
 import GetProducts from '../utills/GetProducts';
 import { useEffect, useState } from 'react';
 import Footer from './footer'; 
+import { BASE_URL } from '../Constants';
 
 function Home() {
 
@@ -30,8 +31,12 @@ function Home() {
    useEffect(()=>{
     const fetchData=async()=>{
       try{
-      const res= await fetch('http://localhost:5000/api/productRouter/products');
-      const json= await res.json();
+        const response = await fetch(`${BASE_URL}/api/productRouter/products`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          }})
+            const json= await response.json();
       setData(json);
     }
     catch(err){
