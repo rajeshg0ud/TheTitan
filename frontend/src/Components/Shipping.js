@@ -56,7 +56,7 @@ function Shipping() {
   return (
     <div className='mt-28 flex justify-center'>
       <div className='shadow-lg p-10 rounded-md bg-white w-full max-w-sm'>
-        <h1 className='font-semibold text-2xl mb-5 text-center'>SHIPPING ADDRESS</h1>
+        <h1 className='font-semibold text-xl sm:text-2xl mb-5 text-center'>SHIPPING ADDRESS</h1>
         <form className='flex flex-col' onSubmit={handleSubmit}>
           <input
             type='text'

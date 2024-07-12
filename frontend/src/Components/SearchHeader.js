@@ -1,20 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logo from '../titan-logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSignOutMutation } from '../reduxStore/UserApiSlice';
 import { toast } from 'react-toastify';
 import { setCredentials } from '../reduxStore/authSlice';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-function Header() {
+function SearchHeader() {
   const userInfo = useSelector((state) => state.authSlice.userInfo);
   const cartItems = useSelector((store) => store?.CartSlice?.cartItems);
 
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
+  const navigate=useNavigate();
 
-  const [dropdownVisible, setDropdownVisible] = useState(false); 
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
+  const handleInputChange = (e) => { 
+    setSearchKeyword(e.target.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+
+      if(searchKeyword.length>0){
+      navigate(`/Search/${searchKeyword}`);
+      }
+      else{
+        navigate('/')
+      }
+    }
+  };
 
   const [signOut, { isLoading }] = useSignOutMutation();
 
@@ -57,12 +75,24 @@ function Header() {
 
 
   return (
-    <div className='fixed top-0 w-full z-50 bg-white shadow-lg'>
+    <div className='fixed flex-row md:flex-none top-0 w-full z-50 bg-white shadow-lg'>
       <header className='flex justify-between pt-2 sm:p-[10px] sm:pb-0'>
         <Link to='/' className='p-3'>
           <img src={logo} className='w-20 sm:w-[124px] ml-7 cursor-pointer' alt='logo' />
         </Link>
-         
+        <div className={`hidden border-2 rounded-sm w-2/6 px-2 h-10 my-[5.5px] sm:flex ${isFocused ? "bg-white" : "bg-gray-50"}`}>
+          <img src='https://www.titan.co.in/on/demandware.static/Sites-Titan-Site/-/default/dwc65631a9/images/search.svg' alt='search' className='p-2 px-1' />
+          <input
+            type='text'
+            placeholder='Search for Products...'
+            value={searchKeyword}
+            className={`outline-none w-full ${isFocused ? "bg-white" : "bg-gray-50"}`}
+            onClick={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}  
+          />
+        </div>
         <div className='flex sm:mr-10'>
           <div>
             {userInfo ? (
@@ -125,8 +155,22 @@ function Header() {
           </Link>
         </div>
       </header>
+
+      <div className={` border-2 rounded-sm w-[90%] px-2 h-11 sm:hidden m-5 my-2 -mt-2 flex ${isFocused ? "bg-white" : "bg-gray-50"}`}>
+          <img src='https://www.titan.co.in/on/demandware.static/Sites-Titan-Site/-/default/dwc65631a9/images/search.svg' alt='search' className='p-2 px-1' />
+          <input
+            type='text'
+            placeholder='Search for Products...'
+            value={searchKeyword}
+            className={`outline-none w-full ${isFocused ? "bg-white" : "bg-gray-50"}`}
+            onClick={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}  
+          />
+        </div>
     </div>
   );
 }
 
-export default Header;
+export default SearchHeader;

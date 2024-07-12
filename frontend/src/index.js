@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './Components/Header';
 import Home from './Components/Home';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider, useLocation } from 'react-router-dom';
 import Product from './utills/Product';
 import { Store } from './reduxStore/Store';
 import {Provider} from 'react-redux';
@@ -16,12 +16,16 @@ import Shipping from './Components/Shipping';
 import PlaceOrder from './Components/PlaceOrder';
 import MyOrders from './Components/MyOrders';
 import Search from './Components/Search';
+import SearchHeader from './Components/SearchHeader';
 
   function AppLayout(){
+    const location = useLocation();
+    const showSearchBar = location.pathname === '/' || /^\/Search\/[^/]+$/.test(location.pathname);
+
     return(
-      <div className="bg-white">
+      <div className="bg-white"> 
       <Provider store={Store} >
-      <Header />
+      {showSearchBar ? <SearchHeader /> : <Header />}
       <Outlet />
       <ToastContainer />
       </Provider>

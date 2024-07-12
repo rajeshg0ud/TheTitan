@@ -20,7 +20,7 @@ function MyOrders() {
 
     return (
         <div className="flex flex-col m-2 sm:ml-16 mt-24">
-            <p className=" font-semibold ml-2 md:font-normal md:m-[6px] text-lg sm:text-3xl">MY ORDERS</p>
+            <p className=" ml-2 md:font-normal md:m-[6px] text-xl sm:text-3xl">MY ORDERS</p>
             <div className="flex flex-col sm:flex-row">
                 <div className="w-full sm:w-10/12">
                     {orders && orders.map((order, index) => (
