@@ -2,14 +2,13 @@ import React from 'react'
 import GetProducts from '../utills/GetProducts';
 import { useEffect, useState } from 'react';
 import Footer from './footer'; 
-import { useGetProductsQuery } from '../reduxStore/getProductsApiSlice';
-import ClipLoader from 'react-spinners/ClipLoader';
 
 function Home() {
 
   const [currentSlide, setCurrentSlide]= useState(0);
-
-  const  { data,isLoading, error } = useGetProductsQuery();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [data, setData]=useState([]);
 
 
   const slides=[
@@ -22,12 +21,29 @@ function Home() {
     const interval=setInterval(() => {
       setCurrentSlide((prevSlide)=>  prevSlide=== slides.length-1 ? 0 : prevSlide+1)
     }, 2800);
-
     
     window.scrollTo(0, 0);
 
     return ()=> clearInterval(interval);
   },[slides.length])
+
+   useEffect(()=>{
+    const fetchData=async()=>{
+      try{
+      const res= await fetch('http://localhost:5000/api/productRouter/products');
+      const json= await res.json();
+      setData(json);
+    }
+    catch(err){
+      setError(err.message)
+    }
+    finally{
+      setLoading(false)
+    }
+    }
+
+    fetchData()
+   },[])
 
   function goToPrev(){
     setCurrentSlide((prevSlide)=> prevSlide=== 0 ? slides.length-1 : prevSlide-1)
@@ -48,7 +64,7 @@ function Home() {
     
     <div className='bg-white shadow-md mt-1 sm:mt-5 pt-7'>
       <p className='font-semibold ml-10 text-sm sm:text-md'>Premium Watches</p>
-      <GetProducts data={data} isLoading={isLoading} error={error}/>
+     <GetProducts data={data} isLoading={loading} error={error}/>
       <div className=' flex justify-center mt-12 h-36 ivory'>
        
        <img className='flex flex-wrap h-36 justify-center ' src='https://www.titan.co.in/on/demandware.static/-/Library-Sites-TitanSharedLibrary/default/dw05cf6619/images/Category%20Banners/Espot_new10.jpeg' alt='banner1'  />
