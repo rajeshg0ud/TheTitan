@@ -5,22 +5,13 @@ import orderRouter from './routes/orderRouter.js';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 dotenv.config();
-import connectToDB from './db.js';
-import cors from 'cors';
+import connectToDB from './db.js'; 
 import path from 'path';
 
 const app = express();
 const PORT = 5000;
 connectToDB();
-
-// Middleware setup
-app.use(cors({
-    origin: 'https://thetitan-858v.onrender.com',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With'],
-    credentials: true
-}));
-
+ 
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
