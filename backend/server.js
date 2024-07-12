@@ -17,7 +17,7 @@ connectToDB();
 app.use(cors({
     origin: 'https://thetitan-858v.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With'],
     credentials: true
 }));
 
