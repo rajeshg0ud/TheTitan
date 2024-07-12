@@ -6,6 +6,8 @@ const generateToken= (res, userId)=>{
         expiresIn: '30d'
         })
 
+    console.log(token);
+
         //set token through server as http cookie, not directly to client local storgae
         res.cookie('jwt', 
             token, {
