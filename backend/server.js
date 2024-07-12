@@ -14,13 +14,13 @@ const PORT = 5000;
 connectToDB();
 
 // Middleware setup
-app.use(cors({ 
-
-    origin: 'https://thetitan-858v.onrender.com', // Replace with your frontend URL
+app.use(cors({
+    origin: 'https://thetitan-858v.onrender.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
+
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
