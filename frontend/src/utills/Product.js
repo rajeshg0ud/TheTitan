@@ -11,12 +11,11 @@ function Product() {
     const dispatch = useDispatch();
     const [btnClicked, setBtnClicked] = useState(false);
 
-    // Using mutation hook to fetch product by ID
     const [fetchProductById, { data, isLoading, error }] = useGetProductByIdMutation();
 
     useEffect(() => {
         if (productId) {
-            fetchProductById(productId); // Fetch product when component mounts
+            fetchProductById(productId); 
         }
         window.scrollTo(0, 0);
     }, [fetchProductById, productId]);
@@ -29,8 +28,7 @@ function Product() {
 
     if (error) return <div className="m-5 mt-24">{error.message}</div>;
 
-    if (!data) return null; // Handle case where data is not yet fetched
-
+    if (!data) return null;  
     const { name, gender, imageUrl, price, listedPrice } = data;
 
     const handleAddToCart = () => {
@@ -43,7 +41,7 @@ function Product() {
             <div className='flex flex-row h-[300px] md:flex-col overflow-x-scroll overflow-y-scroll md:h-[500px] p-4'>
                 {[...Array(6).keys()].map(i => (
                     <img key={i * Math.random()} src={imageUrl && imageUrl.replace(/.(?=\.jpg)/, i + 1)}
-                         className='w-full md:w-[500px] object-cover' alt={name}/>
+                         className='w-full md:w-[500px] object-cover' alt={'.'}/>
                 ))}
             </div>
             <div className='sm:px-10'>

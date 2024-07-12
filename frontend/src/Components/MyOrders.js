@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useMyOrdersMutation } from '../reduxStore/OrderApiSlice';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { Link } from 'react-router-dom';
@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 function MyOrders() {
     const [fetchOrders, { data: orders, isLoading, error }] = useMyOrdersMutation();
 
-    React.useEffect(() => {
-        fetchOrders(); // Fetch orders when component mounts
+    useEffect(() => {
+        fetchOrders();  
     }, [fetchOrders]);
 
     if (isLoading) return (
@@ -20,7 +20,7 @@ function MyOrders() {
 
     return (
         <div className="flex flex-col m-2 sm:ml-16 mt-24">
-            <p className=" md:m-[6px] text-lg sm:text-3xl">MY ORDERS</p>
+            <p className=" font-semibold ml-2 md:font-normal md:m-[6px] text-lg sm:text-3xl">MY ORDERS</p>
             <div className="flex flex-col sm:flex-row">
                 <div className="w-full sm:w-10/12">
                     {orders && orders.map((order, index) => (

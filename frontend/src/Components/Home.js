@@ -70,8 +70,8 @@ function Home() {
                 ) : (
                     <GetProducts data={data} isLoading={loading} error={error || productsError} />
                 )}
-                <div className='flex justify-center mt-12 h-[75px] md:h-36  ivory'>
-                    <img className='flex flex-wrap justify-center h-[70px] md:h-36 ' src='https://www.titan.co.in/on/demandware.static/-/Library-Sites-TitanSharedLibrary/default/dw05cf6619/images/Category%20Banners/Espot_new10.jpeg' alt='banner1' />
+                <div className='flex justify-center mt-12 h-[79px] md:h-36  ivory'>
+                    <img className='flex flex-wrap justify-center h-[59px] md:h-36 ' src='https://www.titan.co.in/on/demandware.static/-/Library-Sites-TitanSharedLibrary/default/dw05cf6619/images/Category%20Banners/Espot_new10.jpeg' alt='banner1' />
                 </div>
                 <Footer />
             </div>

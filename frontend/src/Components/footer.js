@@ -26,9 +26,9 @@ const Footer = () => {
         <div className="footer-column">
           <h3 className='text-xs cursor-pointer sm:text-2xl font-bold m-1 text-black'>Connect with us</h3>
           <div className="social-icons">
-            <FontAwesomeIcon className=' m-1 mx-3 size-4 sm:size-6 cursor-pointer' icon={faFacebook} />
-            <FontAwesomeIcon className=' m-1 mx-3 size-4 sm:size-6 cursor-pointer'  icon={faInstagram} />
-            <FontAwesomeIcon className=' m-1 mx-3 size-4 sm:size-6 cursor-pointer' icon={faTwitter} />
+            <FontAwesomeIcon className=' m-1 mx-2 md:mx-3 size-4 sm:size-6 cursor-pointer' icon={faFacebook} />
+            <FontAwesomeIcon className=' m-1 mx-2 md:mx-3 size-4 sm:size-6 cursor-pointer'  icon={faInstagram} />
+            <FontAwesomeIcon className=' m-1 mx-2 md:mx-3 size-4 sm:size-6 cursor-pointer' icon={faTwitter} />
           </div>
         </div>
       </div>
