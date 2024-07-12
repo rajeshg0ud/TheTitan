@@ -1,17 +1,18 @@
 import { apiSlice } from "./ApiSlice";
+import { BASE_URL } from '../Constants';
 
 export const productApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.mutation({
             query: () => ({
-                url: '/api/productRouter/products',
+                url: `${BASE_URL}/api/productRouter/products`,
                 method: 'POST', // Specify the HTTP method as GET
             }),
         }),
 
         getProductById: builder.mutation({
             query: (id) => ({
-                url: `/api/productRouter/product/${id}`,
+                url: `${BASE_URL}/api/productRouter/product/${id}`,
                 method: 'POST', // Specify the HTTP method as GET
             }),
         }),
