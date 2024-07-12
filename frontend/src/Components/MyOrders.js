@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import React from 'react';
 import { useMyOrdersMutation } from '../reduxStore/OrderApiSlice';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { Link } from 'react-router-dom';
@@ -6,20 +7,9 @@ import { Link } from 'react-router-dom';
 function MyOrders() {
     const [fetchOrders, { data: orders, isLoading, error }] = useMyOrdersMutation();
 
-        const fetchMyOrders = async () => {
-        try {
-            const response = await fetchOrders({
-                credentials: 'include' // Include this option to send cookies
-            });
-            console.log(response.data); // Handle successful response
-        } catch (error) {
-            console.error('Error fetching orders:', error);
-        }
-    };
-
     useEffect(() => {
-        fetchMyOrders();
-    }, []);
+        fetchOrders(); // Fetch orders when component mounts
+    }, [fetchOrders]);
 
     if (isLoading) return (
         <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
