@@ -14,7 +14,7 @@ const PORT = 5000;
 connectToDB();
 
 app.use(cors({
-    origin:   'http://localhost:3000' ,
+    origin:   'https://thetitan-858v.onrender.com' ,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
     credentials: true
