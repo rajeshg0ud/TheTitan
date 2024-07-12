@@ -35,12 +35,12 @@ function Shipping() {
   const sp= new URLSearchParams(search);
   const redirect= sp.get('redirect') || '/Shipping';
 
-  useEffect(() => {
+    useEffect(() => {
     if (userInfo) {
       navigate(redirect);
     }
-  }, [userInfo, redirect]);  
-
+  }, [userInfo, redirect, navigate]); 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
       try {
