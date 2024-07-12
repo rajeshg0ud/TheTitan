@@ -12,7 +12,7 @@ function MyOrders() {
 
     if (isLoading) return (
         <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
-            <ClipLoader color="#36d7b7" loading={isLoading} size={50} />
+            < ClipLoader color="#36d7b7" loading={isLoading} size={50} />
         </div>
     );
 
@@ -22,7 +22,7 @@ function MyOrders() {
         <div className="flex flex-col m-2 sm:ml-16 mt-24">
             <p className=" md:m-[6px] text-lg sm:text-3xl">MY ORDERS</p>
             <div className="flex flex-col sm:flex-row">
-                <div className="w-full sm:w-4/5">
+                <div className="w-full sm:w-10/12">
                     {orders && orders.map((order, index) => (
                         <div className="flex flex-col md:flex-row p-4 m-[8px] my-5 border" key={index}>
                             <div className="flex flex-col w-[71%]">
@@ -31,10 +31,10 @@ function MyOrders() {
                                     {order.orderItems.map((item, idx) => (
                                         <div key={idx} className="flex my-3">
                                             <Link to={`/Product?p=${item.id}`}>
-                                                <img src={item.imageUrl} alt={item.name} className=" min-w-14 md:w-20 h-20 object-cover mr-3" />
+                                                <img src={item.imageUrl} alt={item.name} className=" min-w-14 md:w-20 h-20 object-cover md:pr-3 mr-3 md:mr-6" />
                                             </Link>
-                                            <div className=' ml-2 text-sm lg:text-lg md:ml-0 min-w-full'>
-                                                <p className="text-zinc-800"><strong>{item.name}</strong></p>
+                                            <div className=' ml-2 text-sm lg:text-base md:ml-0 min-w-full'>
+                                                <p className="text-zinc-800 font-semibold md:w-[90%]">{item.name}</p>
                                                 <p className="text-zinc-800">Qty: {item.quantity}</p>
                                                 <p className="text-zinc-800">₹{item.price}</p>
                                             </div>

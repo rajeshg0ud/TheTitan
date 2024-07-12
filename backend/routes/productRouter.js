@@ -3,9 +3,9 @@ import { getAllProducts, getProductById } from '../controllers/productController
 
 const productRouter= express.Router();
 
-productRouter.post('/products', getAllProducts);
+productRouter.get('/products', getAllProducts);
 
-productRouter.post('/product/:id', getProductById);
+productRouter.get('/product/:id', getProductById);
 
 
 export default productRouter

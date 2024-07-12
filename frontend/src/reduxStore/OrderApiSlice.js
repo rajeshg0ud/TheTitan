@@ -13,7 +13,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         myOrders: builder.mutation({
             query: () => ({
                 url: '/api/orderRouter/myOrders',
-                method: 'POST',
+                method: 'GET',
             })
         })
     })

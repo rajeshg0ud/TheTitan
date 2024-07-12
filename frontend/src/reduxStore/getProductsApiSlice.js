@@ -5,14 +5,14 @@ export const productApiSlice = apiSlice.injectEndpoints({
         getProducts: builder.mutation({
             query: () => ({
                 url: '/api/productRouter/products',
-                method: 'POST', // Specify the HTTP method as POST
+                method: 'GET', // Specify the HTTP method as GET
             }),
         }),
 
         getProductById: builder.mutation({
             query: (id) => ({
                 url: `/api/productRouter/product/${id}`,
-                method: 'POST', // Specify the HTTP method as POST
+                method: 'GET', // Specify the HTTP method as GET
             }),
         }),
     }),
