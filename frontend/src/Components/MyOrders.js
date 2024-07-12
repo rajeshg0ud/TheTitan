@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import React from 'react';
+import React, { useEffect } from 'react'; 
 import { useMyOrdersMutation } from '../reduxStore/OrderApiSlice';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { Link } from 'react-router-dom';
