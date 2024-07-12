@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logo from '../titan-logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSignOutMutation } from '../reduxStore/UserApiSlice';
 import { toast } from 'react-toastify';
@@ -11,10 +11,29 @@ function Header() {
   const userInfo = useSelector((state) => state.authSlice.userInfo);
   const cartItems = useSelector((store) => store?.CartSlice?.cartItems);
 
+  const dispatch = useDispatch();
+  const navigate=useNavigate();
+
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
-  const dispatch = useDispatch();
+  const handleInputChange = (e) => { 
+    setSearchKeyword(e.target.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+
+      if(searchKeyword.length>0){
+      navigate(`/Search/${searchKeyword}`);
+      }
+      else{
+        navigate('/')
+      }
+    }
+  };
+
   const [signOut, { isLoading }] = useSignOutMutation();
 
   const dropdownRef = useRef(null);
@@ -56,8 +75,8 @@ function Header() {
 
 
   return (
-    <div className='fixed top-0 w-full z-50'>
-      <header className='flex justify-between pt-2 sm:p-[10px] sm:pb-0 bg-white shadow-lg'>
+    <div className='fixed flex-row md:flex-none top-0 w-full z-50 bg-white shadow-lg'>
+      <header className='flex justify-between pt-2 sm:p-[10px] sm:pb-0'>
         <Link to='/' className='p-3'>
           <img src={logo} className='w-20 sm:w-[124px] ml-7 cursor-pointer' alt='logo' />
         </Link>
@@ -66,9 +85,12 @@ function Header() {
           <input
             type='text'
             placeholder='Search for Products...'
+            value={searchKeyword}
             className={`outline-none w-full ${isFocused ? "bg-white" : "bg-gray-100"}`}
             onClick={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}  
           />
         </div>
         <div className='flex sm:mr-10'>
@@ -133,6 +155,20 @@ function Header() {
           </Link>
         </div>
       </header>
+
+      <div className={` border rounded-sm w-[99%] px-2 h-11 sm:hidden mx-[2px] flex ${isFocused ? "bg-white" : "bg-gray-100"}`}>
+          <img src='https://www.titan.co.in/on/demandware.static/Sites-Titan-Site/-/default/dwc65631a9/images/search.svg' alt='search' className='p-2 px-1' />
+          <input
+            type='text'
+            placeholder='Search for Products...'
+            value={searchKeyword}
+            className={`outline-none w-full ${isFocused ? "bg-white" : "bg-gray-100"}`}
+            onClick={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}  
+          />
+        </div>
     </div>
   );
 }

@@ -108,7 +108,7 @@ function PlaceOrder() {
         <div className="flex flex-col m-2 sm:ml-16 mt-24">
             <p className="m-[6px] text-xl sm:text-3xl">PAYMENT</p>
             <div className="flex flex-col sm:flex-row">
-                <div className="w-[109%]">
+                <div className="w-full md:w-[109%]">
                     {cartItems.map((cartItem, index) => (
                         <div className="flex p-4 m-[6px] border" key={index}>
                             <div>

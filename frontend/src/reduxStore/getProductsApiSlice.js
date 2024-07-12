@@ -4,9 +4,10 @@ import { BASE_URL } from '../Constants';
 export const productApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.mutation({
-            query: () => ({
+            query: ({keyword}) => ({
                 url: `${BASE_URL}/api/productRouter/products`,
                 method: 'POST',
+                params:{keyword}
             }),
         }),
 

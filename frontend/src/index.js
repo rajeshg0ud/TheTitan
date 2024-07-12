@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Shipping from './Components/Shipping';
 import PlaceOrder from './Components/PlaceOrder';
 import MyOrders from './Components/MyOrders';
+import Search from './Components/Search';
 
   function AppLayout(){
     return(
@@ -63,6 +64,10 @@ import MyOrders from './Components/MyOrders';
   {
     path: '/Order-history',
     element: <MyOrders />
+  },
+  {
+    path: '/Search/:keyword',
+    element: <Search />
   }
 ]
   }])

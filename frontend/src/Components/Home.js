@@ -36,26 +36,25 @@ function Home() {
         setCurrentSlide(prevSlide => prevSlide === slides.length - 1 ? 0 : prevSlide + 1);
     }
 
-    useEffect(()=>{
-      function handlegetProducts() {
-        setLoading(true);
-        getProducts()
-            .then(({ data }) => {
-                // setData(json); // No need to set data here as it's handled by useGetProductsMutation
-                setLoading(false);
-            })
-            .catch(err => {
-                setError(err.message);
-                setLoading(false);
-            });
-    }
+    useEffect(() => {
+        function handlegetProducts() {
+            setLoading(true);
+            getProducts( { keyword: '' })
+                .then(response => {
+                    setLoading(false);
+                })
+                .catch(err => {
+                    setError(err.message);
+                    setLoading(false);
+                });
+        }
 
-    handlegetProducts();
-    },[getProducts])
+        handlegetProducts();
+    }, [getProducts]);
 
     return (
         <>
-            <div className='mt-16 sm:mt-[74px] relative'>
+            <div className=' mt-[108px] md:mt-16 sm:mt-[74px] relative'>
                 <img className='flex flex-wrap justify-center shadow-md transition-all' src={slides[currentSlide]} alt='slides' />
                 <button className='absolute top-[29%] sm:top-[43%] p-0 sm:p-2 px-[6px] sm:px-[14px] my-3 mx-1 sm:m-3 rounded-full bg-white font-bold' onClick={goToPrev}>&lt;</button>
                 <button className='absolute top-[29%] right-2  sm:top-[43%] p-0 sm:p-2 px-[6px] sm:px-[14px] my-3 mx-1 sm:m-3 rounded-full bg-white font-bold' onClick={goToNext}>&gt;</button>
