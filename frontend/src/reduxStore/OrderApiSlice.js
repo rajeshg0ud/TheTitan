@@ -1,10 +1,11 @@
 import { apiSlice } from "./ApiSlice";
+import { BASE_URL } from '../Constants';
 
 export const orderApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         placeOrder: builder.mutation({
             query: (data) => ({
-                url: '/api/orderRouter/placeOrder',
+                url: `${BASE_URL}/api/orderRouter/placeOrder`,
                 method: 'POST',
                 body: data,
             })
@@ -13,7 +14,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         
         myOrders: builder.mutation({
             query: () => ({
-                url: '/api/orderRouter/myOrders',
+                url: `${BASE_URL}/api/orderRouter/myOrders`,
                 method: 'POST',
             })
         })
