@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, {useEffect} from 'react';
-=======
-import React, { useEffect } from 'react'; 
->>>>>>> 9bf84dd84251ee7ff87763bbb6fedb0295fcdfb1
 import { useMyOrdersMutation } from '../reduxStore/OrderApiSlice';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { Link } from 'react-router-dom';
@@ -11,11 +7,7 @@ function MyOrders() {
     const [fetchOrders, { data: orders, isLoading, error }] = useMyOrdersMutation();
 
     useEffect(() => {
-<<<<<<< HEAD
         fetchOrders();  
-=======
-        fetchOrders(); // Fetch orders when component mounts
->>>>>>> 9bf84dd84251ee7ff87763bbb6fedb0295fcdfb1
     }, [fetchOrders]);
 
     if (isLoading) return (

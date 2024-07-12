@@ -70,14 +70,10 @@ function Home() {
                 ) : (
                     <GetProducts data={data} isLoading={loading} error={error || productsError} />
                 )}
-<<<<<<< HEAD
-                <div className='flex justify-center mt-12 h-[79px] md:h-36  ivory'>
+                <div className='flex justify-center mt-12 h-[71px] md:h-36  ivory'>
                     <img className='flex flex-wrap justify-center h-[59px] md:h-36 ' src='https://www.titan.co.in/on/demandware.static/-/Library-Sites-TitanSharedLibrary/default/dw05cf6619/images/Category%20Banners/Espot_new10.jpeg' alt='banner1' />
-=======
-                <div className='flex justify-center mt-12 h-[75px] md:h-36  ivory'>
-                    <img className='flex flex-wrap justify-center h-[60px] md:h-36 ' src='https://www.titan.co.in/on/demandware.static/-/Library-Sites-TitanSharedLibrary/default/dw05cf6619/images/Category%20Banners/Espot_new10.jpeg' alt='banner1' />
->>>>>>> 9bf84dd84251ee7ff87763bbb6fedb0295fcdfb1
                 </div>
+
                 <Footer />
             </div>
         </>
