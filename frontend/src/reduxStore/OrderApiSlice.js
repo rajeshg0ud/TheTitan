@@ -1,23 +1,22 @@
 import { apiSlice } from "./ApiSlice";
 
-
-export const orderApiSlice= apiSlice.injectEndpoints({
-    endpoints:(builder)=>({
-        placeOrder:builder.mutation({
-            query:(data)=>({
+export const orderApiSlice = apiSlice.injectEndpoints({
+    endpoints: (builder) => ({
+        placeOrder: builder.mutation({
+            query: (data) => ({
                 url: '/api/orderRouter/placeOrder',
                 method: 'POST',
                 body: data,
             })
         }),
 
-        myOrders:builder.query({
-            query:()=>({
-                url:'/api/orderRouter/myOrders',
+        myOrders: builder.mutation({
+            query: () => ({
+                url: '/api/orderRouter/myOrders',
+                method: 'POST',
             })
         })
     })
+});
 
-})
-
-export const {usePlaceOrderMutation,  useMyOrdersQuery}= orderApiSlice
+export const { usePlaceOrderMutation, useMyOrdersMutation } = orderApiSlice;

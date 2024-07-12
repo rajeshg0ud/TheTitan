@@ -7,18 +7,21 @@ import dotenv from 'dotenv';
 dotenv.config();
 import connectToDB from './db.js'; 
 import path from 'path';
+import cors from 'cors';
+
 
 const app = express();
 const PORT = 5000;
 connectToDB();
 
-// Middleware setup
-app.use(cors({ 
-    origin: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://thetitan-858v.onrender.com',
+app.use(cors({
+    origin:   'http://localhost:3000' ,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
     credentials: true
 }));
+
+
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();

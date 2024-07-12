@@ -2,21 +2,21 @@ import { apiSlice } from "./ApiSlice";
 
 export const productApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getProducts: builder.query({
+        getProducts: builder.mutation({
             query: () => ({
                 url: '/api/productRouter/products',
-                method: 'GET', // Specify the HTTP method
+                method: 'POST', // Specify the HTTP method as POST
             }),
         }),
 
-        getProductById: builder.query({
+        getProductById: builder.mutation({
             query: (id) => ({
                 url: `/api/productRouter/product/${id}`,
-                method: 'GET',
+                method: 'POST', // Specify the HTTP method as POST
             }),
-        })
+        }),
     }),
 });
 
 // Destructure the generated hooks from the API slice
-export const { useGetProductsQuery , useGetProductByIdQuery} = productApiSlice;
+export const { useGetProductsMutation, useGetProductByIdMutation } = productApiSlice;

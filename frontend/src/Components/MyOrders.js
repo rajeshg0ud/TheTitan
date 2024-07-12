@@ -1,14 +1,20 @@
 import React from 'react';
-import { useMyOrdersQuery } from '../reduxStore/OrderApiSlice';
+import { useMyOrdersMutation } from '../reduxStore/OrderApiSlice';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { Link } from 'react-router-dom';
 
 function MyOrders() {
-    const { data: orders, isLoading, error } = useMyOrdersQuery({}, { staleTime: 0 });
+    const [fetchOrders, { data: orders, isLoading, error }] = useMyOrdersMutation();
 
-    if (isLoading) return <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
-        <ClipLoader color="#36d7b7" loading={isLoading} size={50} />
-    </div>;
+    React.useEffect(() => {
+        fetchOrders(); // Fetch orders when component mounts
+    }, [fetchOrders]);
+
+    if (isLoading) return (
+        <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
+            <ClipLoader color="#36d7b7" loading={isLoading} size={50} />
+        </div>
+    );
 
     if (error) return <div className="m-5 mt-24">{error?.message}</div>;
 
@@ -17,7 +23,7 @@ function MyOrders() {
             <p className="m-[6px] text-xl sm:text-3xl">MY ORDERS</p>
             <div className="flex flex-col sm:flex-row">
                 <div className="w-full sm:w-4/5">
-                    {orders.map((order, index) => (
+                    {orders && orders.map((order, index) => (
                         <div className="flex flex-row p-4 m-[8px] my-5 border" key={index}>
                             <div className="flex flex-col w-[71%]">
                                 <div className="border-b p-4 mb-4">
@@ -28,9 +34,9 @@ function MyOrders() {
                                                 <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover mr-3" />
                                             </Link>
                                             <div>
-                                                <p className="text-zinc-800"><strong>{item.name}</strong> </p>
-                                                <p className="text-zinc-800">Qty: {item.quantity} </p>
-                                                <p className="text-zinc-800">₹{item.price} </p>
+                                                <p className="text-zinc-800"><strong>{item.name}</strong></p>
+                                                <p className="text-zinc-800">Qty: {item.quantity}</p>
+                                                <p className="text-zinc-800">₹{item.price}</p>
                                             </div>
                                         </div>
                                     ))}
