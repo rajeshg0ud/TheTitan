@@ -6,9 +6,20 @@ import { Link } from 'react-router-dom';
 function MyOrders() {
     const [fetchOrders, { data: orders, isLoading, error }] = useMyOrdersMutation();
 
-    React.useEffect(() => {
-        fetchOrders(); // Fetch orders when component mounts
-    }, [fetchOrders]);
+        const fetchMyOrders = async () => {
+        try {
+            const response = await fetchOrders({
+                credentials: 'include' // Include this option to send cookies
+            });
+            console.log(response.data); // Handle successful response
+        } catch (error) {
+            console.error('Error fetching orders:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchMyOrders();
+    }, []);
 
     if (isLoading) return (
         <div className="self-center flex justify-center m-[6px] items-center text-3xl font-semibold">
