@@ -1,26 +1,25 @@
 import express from 'express';
-import productRouter from './routes/productRouter.js'
 import userRouter from './routes/userRouter.js';
 import orderRouter from './routes/orderRouter.js';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 dotenv.config();
-import connectToDB from './db.js'; 
-import path from 'path';
+import connectToDB from './db.js';
 import cors from 'cors';
+import path from 'path';
+import productRouter from './routes/productRouter.js';
 
 const app = express();
 const PORT = 5000;
 connectToDB();
 
+// Middleware setup
 app.use(cors({
-    origin:   'https://the-titan.vercel.app' ,
+    origin: 'https://the-titan.vercel.app', // Replace with your frontend URL
+    credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-    credentials: true
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
-
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
@@ -44,5 +43,4 @@ app.use('/api/productRouter', productRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  
 });
