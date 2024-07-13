@@ -10,7 +10,7 @@ const generateToken = (res, userId) => {
     res.cookie('jwt', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production', // true for production
-        sameSite: 'none', // Required for cross-origin requests
+        sameSite: 'strict', // Required for cross-origin requests
         maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
     });
 
