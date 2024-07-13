@@ -13,9 +13,7 @@ console.log(token)
         sameSite: 'none',  
         maxAge: 30 * 24 * 60 * 60 * 1000,  
     });
-
-    // Set status and response message
-    res.status(200).json({ message: 'Token generated and set in cookie' });
+ 
 };
 
 export default generateToken;
