@@ -9,14 +9,12 @@ const generateToken= (res, userId)=>{
     console.log(token);
 
         //set token through server as http cookie, not directly to client local storgae
-        res.cookie('jwt', 
-            token, {
-                httpOnly: true,
-                secure: process.env.NODE_ENV !== 'development',
-                sameSite: 'none',
-                maxAge: 30* 34* 60* 60* 1000,//30days
-            }
-        )
+        res.cookie('jwt', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', // true for production
+    sameSite: 'none', // Required for cross-origin requests
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+});
 }
 
 export default generateToken;
