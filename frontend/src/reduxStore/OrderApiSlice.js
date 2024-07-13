@@ -8,14 +8,15 @@ export const orderApiSlice = apiSlice.injectEndpoints({
                 url: `${BASE_URL}/api/orderRouter/placeOrder`,
                 method: 'POST',
                 body: data,
+                credentials: 'include', // Add this line
             })
         }),
-
         
         myOrders: builder.mutation({
             query: () => ({
                 url: `${BASE_URL}/api/orderRouter/myOrders`,
                 method: 'POST',
+                credentials: 'include', // Add this line
             })
         })
     })
