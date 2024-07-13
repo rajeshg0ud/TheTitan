@@ -1,23 +1,26 @@
-# Use the official Node.js image as the base image
-FROM node:14
+# Use the official Node.js 18 image as the base image
+FROM node:18
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install backend dependencies
+# Install dependencies
 RUN npm install
 
 # Copy the rest of the application code
 COPY . .
 
-# Install frontend dependencies and build the frontend
-RUN npm install --prefix frontend && npm run build --prefix frontend
+# Rebuild bcrypt inside the container
+RUN npm rebuild bcrypt
 
-# Expose the port the app runs on
+# Build the frontend
+RUN cd frontend && npm install && npm run build
+
+# Expose the application port
 EXPOSE 3000
 
-# Command to run the app
+# Start the application
 CMD ["npm", "start"]
