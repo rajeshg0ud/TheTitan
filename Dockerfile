@@ -19,8 +19,15 @@ RUN npm rebuild bcrypt
 # Build the frontend
 RUN cd frontend && npm install && npm run build
 
-# Expose the application port
+# Expose the backend port
+EXPOSE 5000
+
+# Expose the frontend port
 EXPOSE 3000
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=5000
 
 # Start the application
 CMD ["npm", "start"]
