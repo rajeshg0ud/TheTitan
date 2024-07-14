@@ -13,12 +13,13 @@ const app = express();
 const PORT = 5000;
 connectToDB();
 
-// Middleware setup
+ 
 app.use(cors({
-    origin: 'https://the-titan.vercel.app', // Replace with your frontend URL
+    origin: 'https://the-titan.vercel.app',  
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'], 
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
 }));
 
 if (process.env.NODE_ENV === 'production') {
