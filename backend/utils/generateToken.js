@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 
 // Sample function to set JWT token as a cookie
-const setToken = (res, user) => {
+const generateToken = (res, user) => {
    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: '30d'
     });
