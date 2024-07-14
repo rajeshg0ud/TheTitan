@@ -18,8 +18,7 @@ app.use(cors({
     origin: 'https://the-titan.vercel.app', // Replace with your frontend URL
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'], 
 }));
 
 if (process.env.NODE_ENV === 'production') {
