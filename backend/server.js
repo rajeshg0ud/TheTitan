@@ -13,14 +13,8 @@ const app = express();
 const PORT = 5000;
 connectToDB();
 
-<<<<<<< HEAD
- 
-app.use(cors({
-    origin: 'http://localhost:3000',  
-=======
 app.use(cors({
     origin: 'https://the-titan.vercel.app',  // Your frontend URL
->>>>>>> 99904a849c9640c4f78672827c81d6469199ec19
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
