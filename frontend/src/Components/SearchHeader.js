@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logo from '../titan-logo.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSignOutMutation } from '../reduxStore/UserApiSlice';
 import { toast } from 'react-toastify';
@@ -61,6 +61,14 @@ function SearchHeader() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [dropdownRef]);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      setSearchKeyword('');
+    }
+  }, [location.pathname]);
 
   let numOfItem = 0;
   if (cartItems && cartItems.length > 0) {

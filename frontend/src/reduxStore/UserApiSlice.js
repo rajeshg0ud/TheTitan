@@ -8,6 +8,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 url: `${BASE_URL}/api/userRouter`, 
                 method: 'POST',
                 body: data,
+                credentials: 'include', // Include credentials
             }),
         }),
         register: builder.mutation({
@@ -15,15 +16,18 @@ export const userApiSlice = apiSlice.injectEndpoints({
                 url: `${BASE_URL}/api/userRouter/register`, 
                 method: 'POST',
                 body: data,
+                credentials: 'include', // Include credentials
             }),
         }),
         signOut: builder.mutation({
             query: () => ({
                 url: `${BASE_URL}/api/userRouter/signOut`,
                 method: 'POST',
+                credentials: 'include', // Include credentials
             })
         })
     }),
-});
+})
+
 
 export const { useLoginMutation, useRegisterMutation, useSignOutMutation } = userApiSlice;

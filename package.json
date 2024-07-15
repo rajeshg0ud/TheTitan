@@ -4,16 +4,15 @@
   "description": "MERN stack application backend",
   "main": "server.js",
   "type": "module",
-  
   "scripts": {
-  "start": "node backend/server.js",
-  "startFullApp": "concurrently \"npm run backend\" \"npm run frontend\"",
-  "backend": "nodemon backend/server.js",
-  "frontend": "npm start --prefix frontend",
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-  "docker": "docker-compose up --build" 
-},
+    "start": "node backend/server.js",
+    "startFullApp": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "nodemon backend/server.js",
+    "frontend": "npm start --prefix frontend",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "docker": "docker-compose up --build"
+  },
   "author": "Your Name",
   "license": "ISC",
   "dependencies": {
