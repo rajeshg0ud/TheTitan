@@ -28,10 +28,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
         })
     }),
 })
-<<<<<<< HEAD
-
-=======
->>>>>>> 99904a849c9640c4f78672827c81d6469199ec19
 
 
 export const { useLoginMutation, useRegisterMutation, useSignOutMutation } = userApiSlice;
