@@ -13,14 +13,22 @@ const app = express();
 const PORT = 5000;
 connectToDB();
 
+<<<<<<< HEAD
  
 app.use(cors({
     origin: 'http://localhost:3000',  
+=======
+app.use(cors({
+    origin: 'https://the-titan.vercel.app',  // Your frontend URL
+>>>>>>> 99904a849c9640c4f78672827c81d6469199ec19
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
 }));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
@@ -34,9 +42,6 @@ if (process.env.NODE_ENV === 'production') {
         res.send('API is running...');
     });
 }
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 app.use('/api/userRouter', userRouter);
 app.use('/api/orderRouter', orderRouter);
