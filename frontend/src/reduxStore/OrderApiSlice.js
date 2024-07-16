@@ -5,21 +5,20 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         placeOrder: builder.mutation({
             query: (data) => ({
-                url: `${BASE_URL}/api/orderRouter/placeOrder`,
+                url: `/api/orderRouter/placeOrder`, // Use relative URL
                 method: 'POST',
                 body: data,
-                credentials: 'include', // Add this line
-            })
+            }),
         }),
         
         myOrders: builder.mutation({
             query: () => ({
-                url: `${BASE_URL}/api/orderRouter/myOrders`,
+                url: `/api/orderRouter/myOrders`, // Use relative URL
                 method: 'POST',
-                credentials: 'include', // Add this line
-            })
-        })
-    })
+            }),
+        }),
+    }),
 });
 
 export const { usePlaceOrderMutation, useMyOrdersMutation } = orderApiSlice;
+
